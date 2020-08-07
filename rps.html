@@ -3,16 +3,16 @@
     
     let computerPlay = () => options[Math.floor(Math.random()*options.length)];
 
-    function capitalize(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    }
+    let capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    
 
     function play(playerSelection, computerSelection){
         
         if(playerSelection == computerSelection){
             return "Its a tie";
         }
-        else if ((playerSelection == 'Rock' && computerSelection =='Paper') || (playerSelection == 'Paper' && computerSelection =='Scissors') || (playerSelection == 'Scissors' && computerSelection =='Rock')){
+        else if ((playerSelection == 'Rock' && computerSelection =='Paper') || (playerSelection == 'Paper' && computerSelection =='Scissors') ||
+        (playerSelection == 'Scissors' && computerSelection =='Rock')){
             return "You lose";
         }
         else{
@@ -30,7 +30,16 @@
         for (let i = 0; i < 5; i++){
             userInput = prompt("Choose between Rock, Paper or Scissors.");
             userInput = capitalize(userInput);
-            
+            let a = 0;
+            while (a == 0){
+                if (userInput == 'Rock' || userInput == 'Paper' || userInput == 'Scissors'){
+                    a++;
+                }
+                else{
+                    userInput = prompt("Dont be a \"mentol\" Please enter Rock, Paper or Scissors.");
+                    userInput = capitalize(userInput);
+                }
+            }
             computerSelection = computerPlay();
             let result = play(userInput, computerSelection);
 
