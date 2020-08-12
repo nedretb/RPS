@@ -90,13 +90,25 @@ function endGame(){
         paragraph.textContent = "Final Score: Player " +playerW + " Computer " +computerw;
 
         const button = document.createElement("button");
-        button.classList.add('none');
+        button.classList.add('but');
         button.setAttribute("id", "deleteOnClick");
+        button.setAttribute("onclick", "enableButtons()")
         button.textContent = "Play again";
 
         container.appendChild(paragraph);
         container.appendChild(button);
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissor").disabled = true;
         myFuncCalls = 0;
         playerW = 0;
         computerw = 0;
+}
+
+function enableButtons(){
+    let rmv = document.getElementById("deleteOnClick");
+    rmv.remove();
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissor").disabled = false;
 }
